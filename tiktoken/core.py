@@ -329,7 +329,8 @@ class Encoding:
     def eot_token(self) -> int:
         return self._special_tokens["<|endoftext|>"]
 
-    @functools.cached_property
+    @property
+    @functools.lru_cache()
     def special_tokens_set(self) -> set[str]:
         return set(self._special_tokens.keys())
 
